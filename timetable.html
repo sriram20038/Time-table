@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Timetable</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      font-size: 2.5rem;
+      background: #2c3e50;
+      margin: 0;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    .quote {
+      text-align: center;
+      font-style: italic;
+      margin: 20px;
+      font-size: 1.2rem;
+      color: #333;
+      animation: fadeIn 2s ease-in;
+    }
+    .rules {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      background: #ffffffcc;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      animation: fadeIn 2s ease;
+    }
+    .rules h2 {
+      margin-top: 0;
+      color: #e67e22;
+    }
+    .rules ul {
+      padding-left: 20px;
+    }
+    .rules li {
+      margin-bottom: 8px;
+    }
+    .timetable {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      animation: zoomIn 1.2s ease;
+    }
+    .time-block {
+      border-left: 6px solid #2980b9;
+      margin: 15px 0;
+      padding: 15px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.6s forwards;
+    }
+    .time-block:nth-child(1) { animation-delay: 0.2s; }
+    .time-block:nth-child(2) { animation-delay: 0.4s; }
+    .time-block:nth-child(3) { animation-delay: 0.6s; }
+    .time-block:nth-child(4) { animation-delay: 0.8s; }
+    .time-block:nth-child(5) { animation-delay: 1s; }
+    .time-block:nth-child(6) { animation-delay: 1.2s; }
+    .time-block:nth-child(7) { animation-delay: 1.4s; }
+    .time-block:hover {
+      transform: scale(1.05);
+      background: #dff9fb;
+    }
+    .time {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #2c3e50;
+    }
+    .task {
+      font-size: 1.1rem;
+      margin-top: 5px;
+      color: #34495e;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 My Daily Timetable</h1>
+  <div class="quote">"Success doesn’t come from what you do occasionally, it comes from what you do consistently."</div>
+
+  <div class="rules">
+    <h2>📌 Daily Rules</h2>
+    <ul>
+      <li>Wake up early and stick to the schedule.</li>
+      <li>Study with full focus and no distractions.</li>
+      <li>Use break times wisely—rest or reflect.</li>
+      <li>Revise what you learn every evening.</li>
+      <li>Sleep on time to recharge for the next day.</li>
+    </ul>
+  </div>
+
+  <div class="timetable" id="timetable"></div>
+
+  <script>
+    const schedule = [
+      { time: "5:30 AM - 7:00 AM", task: "🏋️‍♂️ Gym" },
+      { time: "7:00 AM - 7:45 AM", task: "🧼 Get Ready" },
+      { time: "7:45 AM - 10:15 AM", task: "📘 Study Subject 1 <b>(Data Structures)</b>" },
+      { time: "10:30 AM - 1:15 PM", task: "📙 Study Subject 2 <b>(CALCULUS)</b>" },
+      { time: "2:00 PM - 4:45 PM", task: "📗 Study Subject 3 <b>(DBMS)</b>" },
+      { time: "5:00 PM - 6:15 PM", task: "💼 TCS Prep" },
+      { time: "7:00 PM - 10:00 PM", task: "💻 TCS Prep" }
+    ];
+
+    const container = document.getElementById('timetable');
+    schedule.forEach(item => {
+      const block = document.createElement('div');
+      block.className = 'time-block';
+      block.innerHTML = `<div class="time">${item.time}</div><div class="task">${item.task}</div>`;
+      container.appendChild(block);
+    });
+  </script>
+</body>
+</html>
